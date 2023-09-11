@@ -1,0 +1,29 @@
+<div class="d-flex">
+    <div style="width: 12.5rem; height: 92.9vh;" class="sidebar bg-info p-3 d-flex flex-column">
+        <a routerLink="/home">HOME</a>
+        <a routerLink="/users">USERS</a>
+        <button (click)="logout()" class="btn mt-auto text-light fw-bolder fs-5"> <i class="fa-solid fa-right-from-bracket me-2"></i> LogOut</button>
+    </div>
+    <div class="dashboard p-3  w-100">
+       <div class="row">
+        <div class="col-lg-8">
+            <div style="height:150px; background-image: url(https://www.acurax.com/wp-content/themes/acuraxsite/images/inner_page_bnr.jpg?x21934); background-size: contain;" class="admin-panel border rounded">
+            <h3 class="text-light p-5 fs-3">Welcome <span class="">{{adminName}}</span></h3>
+            </div>
+            <div class="d-flex mt-3">
+                <div style="height: 400px;" class="col-lg-5 border rounded"><app-inline-calender></app-inline-calender></div>
+                <div class="col-lg-1"></div>
+                <div style="height: 400px;" class="col-lg-6 border rounded ms-auto"><app-chart></app-chart></div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div style="height: 350px;" class="admin-details border rounded p-2">
+                <app-edit-admin (onUpdate)="updateAdminName($event)"></app-edit-admin>
+            </div>
+            <div style="height: 200px;" class="random-user border mt-2 rounded p-2 d-flex align-items-center justify-content-center fs-4 text-primary">
+                <i class="fa-users fa-solid me-2"> Employee : <span class="">{{totalUserCount}}</span></i>
+            </div>
+        </div>
+       </div>
+    </div>
+</div>

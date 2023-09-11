@@ -1,0 +1,46 @@
+<div class="d-flex">
+    <div style="width: 12.5rem; height: 92.9vh;" class="sidebar bg-info p-3 d-flex flex-column">
+        <a routerLink="/home">HOME</a>
+        <a routerLink="/users">USERS</a>
+    </div>
+    <div class="dashboard p-5">
+        <div>
+            <h4>Add User</h4>
+        </div>
+        <div class="user-details">
+            <form class="shadow p-3" #addUserForm="ngForm">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInputid" placeholder="name@example.com" required pattern="[0-9]*" #id="ngModel" name="id" [(ngModel)]="user.id">
+                    <label for="floatingInputid">User Id</label>
+                  </div>
+                  <div *ngIf="id.invalid && id.touched" class="mb-3 text-danger">*Invalid Id</div>
+                  <!--  -->
+                  <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInputname" placeholder="Password" required pattern="[a-zA-Z]*" #name="ngModel" name="name" [(ngModel)]="user.name">
+                    <label for="floatingInputname">User Name</label>
+                  </div>
+                  <div *ngIf="name.invalid && name.touched" class="mb-3 text-danger">Invalid Username</div>
+                  <!--  -->
+                  <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="floatingInputmail" placeholder="Password" required #email="ngModel" name="email" [(ngModel)]="user.email">
+                    <label for="floatingInputmail">Email</label>
+                  </div>
+                  <div *ngIf="email.invalid && email.touched" class="mb-3 text-danger">Invalid email</div>
+                  <!--  -->
+                  <div class="form-floating mb-3">
+                    <select name="active" id="floatingInputstatus" class="form-control" required #active="ngModel" [(ngModel)]="user.active">
+                        <option disabled selected hidden value=""></option>
+                        <option value="1">Active</option>
+                        <option value="0">Inactive</option>
+                    </select>
+                    <label for="floatingInputstatus">Status</label>
+                  </div>
+                  <div class="mb-3 text-danger" *ngIf="active.invalid && active.touched">Invalid Status</div>
+                  <div class="d-flex justify-content-evenly">
+                    <button (click)="cancel()" class="btn btn-warning">Cancel</button>
+                    <button (click)="addUser()" [disabled]="addUserForm.invalid" class="btn btn-success">Save</button>
+                  </div>
+            </form>
+        </div>
+    </div>
+</div>
